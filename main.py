@@ -13,6 +13,7 @@ def clear_sqlite_db():
 if __name__ == '__main__':
     clear_sqlite_db()
     Base.metadata.create_all(engine)
+
     # Joined Table Inheritance
     with Session() as session:
         test_user = User(name="Dave", fullname="Davothy", nickname="Sam")
@@ -32,7 +33,7 @@ if __name__ == '__main__':
         session.add(test_employee)
         session.add(test_manager)
         session.commit()
-        our_user = session.query(Employee).filter_by(name='George').first()
-        our_admin = session.query(Manager).filter_by(name='Greg').first()
-    print(our_user)
-    print(our_admin)
+        our_employee = session.query(Employee).filter_by(name='George').first()
+        our_manager = session.query(Manager).filter_by(name='Greg').first()
+    print(our_employee)
+    print(our_manager)
